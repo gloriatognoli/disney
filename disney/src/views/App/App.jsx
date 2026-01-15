@@ -7,6 +7,7 @@ import {HashRouter as Router} from 'react-router-dom';
 import {Route, Routes} from 'react-router-dom';
 import Home from '../Home/Home.jsx';
 import Characters from '../Characters/Characters.jsx';
+import CharacterDetail from '../CharacterDetail/CharacterDetail.jsx';
 import Info from '../Info/Info.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Logo from '../../assets/logo_disney.png';
@@ -34,7 +35,7 @@ function App() {
                     <Route path="/" element={<Home />}/>
                     <Route path="/characters" element={<Characters />}/>
                     <Route path="/info" element={<Info />}/>
-                    <Route path="/characters/:_id" element={<PokemonDetail />}/>
+                    <Route path="/characters/:_id" element={<CharacterDetail />}/>
                     <Route path="*" element={<NotFound />}/>
                 </Routes>
 
