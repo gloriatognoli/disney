@@ -2,34 +2,47 @@ import { useState } from 'react'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import MainTemplate from '../components/MainTemplate/MainTemplate.jsx';
+import {HashRouter as Router} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import Home from '../Home/Home.jsx';
+import Characters from '../Characters/Characters.jsx';
+import Info from '../Info/Info.jsx';
+import NotFound from '../NotFound/NotFound.jsx';
+import Logo from '../../assets/logo_disney.png';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const nav = [
+        {url: "/", text: "Home"},
+        {url: "/characters", text: "Characters"},
+        {url: "/info", text: "Info"}
+    ];
+
+    return (
+
+        <Router>
+
+            <MainTemplate
+                footerCourseName="Applicazioni Web: Progettazione e Sviluppo"
+                footerCourseLink="https://elearning.unimib.it/course/view.php?id=61231"
+                navItems={nav}
+                logo={Logo}
+            >
+
+                <Routes>
+                    <Route path="/" element={<Home />}/>
+                    <Route path="/characters" element={<Characters />}/>
+                    <Route path="/info" element={<Info />}/>
+                    <Route path="/characters/:_id" element={<PokemonDetail />}/>
+                    <Route path="*" element={<NotFound />}/>
+                </Routes>
+
+            </MainTemplate>
+
+        </Router>
+    );
 }
 
-export default App
+export default App;
+
