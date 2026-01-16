@@ -10,7 +10,7 @@ import Home from '../Home/Home.jsx';
 //import CharacterDetail from '../CharacterDetail/CharacterDetail.jsx';
 //import Info from '../Info/Info.jsx';
 //import NotFound from '../NotFound/NotFound.jsx';
-//import Logo from '../../assets/logo_disney.png';
+import Logo from '../../assets/logo_disney.png';
 
 function App() {
 

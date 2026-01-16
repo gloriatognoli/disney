@@ -1,10 +1,11 @@
 import React from "react";
 import CharacterCard from "../CharacterCard/CharacterCard.jsx";
+import {data} from "../../../models/characters-data.json"
 
 function CharacterCardGrid(props) {
     const {apiData, col} = props;
 
-    const characterCardsCol = apiData.map((apiData) => {
+    const characterCardsCol = data.map((apiData) => {
         return (
             <div key={apiData._id} className="col">
                 <CharacterCard
