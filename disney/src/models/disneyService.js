@@ -9,6 +9,9 @@ export const disneyService = {
 
         const json = await response.json();
 
-        return json.data.map(character => formatCharacter(character));
+        return json.data
+            .map(character => formatCharacter(character))
+            .sort((a, b) => a._id - b._id);
+
     }
 };

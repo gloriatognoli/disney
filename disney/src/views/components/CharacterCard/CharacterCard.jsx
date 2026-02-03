@@ -18,7 +18,7 @@ function CharacterCard(props) {
                 <CardImg loading="lazy" className={style.imageUrl} top
                          width="100%" src={image} alt={name}/>
                 <CardBody className="text-center">
-                    <CardTitle tag="h5" className={`h3 ${style.title}`}>{name}</CardTitle>
+                    <CardTitle tag="h5" className={`card-title`}>{name}</CardTitle>
                 </CardBody>
             </Card>
         </NavLink>
