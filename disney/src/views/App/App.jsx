@@ -8,8 +8,8 @@ import {Route, Routes} from 'react-router-dom';
 import Home from '../Home/Home.jsx';
 //import Characters from '../Characters/Characters.jsx';
 //import CharacterDetail from '../CharacterDetail/CharacterDetail.jsx';
-//import Info from '../Info/Info.jsx';
-//import NotFound from '../NotFound/NotFound.jsx';
+import Info from '../Info/Info.jsx';
+import NotFound from '../NotFound/NotFound.jsx';
 import Logo from '../../assets/logo_disney.png';
 
 function App() {
@@ -39,6 +39,8 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<Home />}/>
+                    <Route path="/info" element={<Info />}/>
+                    <Route path="*" element={<NotFound />}/>
                 </Routes>
 
             </MainTemplate>
