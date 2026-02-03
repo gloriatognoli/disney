@@ -1,16 +1,17 @@
 import React from "react";
 import CharacterCard from "../CharacterCard/CharacterCard.jsx";
-import {data} from "../../../models/characters-data.json"
+// import {data} from "../../../models/characters-data.json"
 
 function CharacterCardGrid(props) {
-    const {apiData, col} = props;
+    const {characters, col} = props;
 
-    const characterCardsCol = data.map((apiData) => {
+    const characterCardsCol = characters.map((character) => {
         return (
-            <div key={apiData._id} className="col">
+            <div key={character._id} className="col">
                 <CharacterCard
-                    name={apiData.name}
-                    image={apiData.imageUrl}
+                    id={character._id}
+                    name={character.name}
+                    image={character.imageUrl}
                 />
             </div>
         )

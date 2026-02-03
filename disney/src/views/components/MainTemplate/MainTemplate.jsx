@@ -1,5 +1,4 @@
 //Main Template
-//Ricordarsi di cambiare la className del div tra Header e Footer (da my-5 a qualcos'altro)
 import React from "react";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
