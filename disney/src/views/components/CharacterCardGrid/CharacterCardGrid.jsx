@@ -1,6 +1,6 @@
 import React from "react";
 import CharacterCard from "../CharacterCard/CharacterCard.jsx";
-// import {data} from "../../../models/characters-data.json"
+
 
 function CharacterCardGrid(props) {
     const {characters, col} = props;

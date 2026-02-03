@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { disneyService } from '../models/disneyService';
-import initialData from '../models/characters-data.json';
+import {data} from '../models/characters-data.json';
 import { formatCharacter } from '../models/Character';
 
 export const useCharactersViewModel = () => {
     // 1. STATO: Inizializziamo con i dati locali del JSON
-    const [characters, setCharacters] = useState(initialData.map(formatCharacter));
+    const [characters, setCharacters] = useState(data.map(formatCharacter));
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(2);
-    const [viewMode, setViewMode] = useState('grid');
 
     // 2. LOGICA DI CARICAMENTO (Fetch progressiva)
     const loadMoreCharacters = async () => {
@@ -33,18 +32,21 @@ export const useCharactersViewModel = () => {
         }
     };
 
-    // 3. LOGICA DI UI
-    const toggleViewMode = () => {
-        setViewMode(prev => (prev === 'grid' ? 'list' : 'grid'));
-    };
-
     // 4. ESPOSIZIONE: Cosa vede la View
     return {
         characters,
         loading,
-        viewMode,
-        toggleViewMode,
         loadMoreCharacters,
         hasMore: characters.length < 500
     };
 };
+
+
+//const [viewMode, setViewMode] = useState('grid');
+// 3. LOGICA DI UI
+//const toggleViewMode = () => {
+//    setViewMode(prev => (prev === 'grid' ? 'list' : 'grid'));
+
+//toggleViewMode,
+//viewMode,
+//};

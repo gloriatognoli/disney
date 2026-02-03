@@ -3,7 +3,6 @@ import React from "react";
 import {Card, CardBody, CardImg, CardTitle} from "reactstrap";
 import style from "./CharacterCard.module.css";
 import {NavLink} from "react-router-dom";
-import {characterDefaultImage} from "../../../viewmodels/utility.js"
 
 
 function CharacterCard(props) {
