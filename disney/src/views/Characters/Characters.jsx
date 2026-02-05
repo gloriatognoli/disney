@@ -1,16 +1,23 @@
 // src/views/Characters/Characters.jsx
 import React from 'react';
-import { Container, Button, Spinner } from 'reactstrap';
+import { Container, Button, Spinner, Input, InputGroup, InputGroupText } from 'reactstrap';
 import { useCharactersViewModel } from '../../viewmodels/useCharactersViewModel';
+
 import  CharacterCardGrid  from '../components/CharacterCardGrid/CharacterCardGrid.jsx';
 import style from './Characters.module.css';
 
 export const Characters = () => {
     const {
         characters,
+        allCharacters,
         loading,
         loadMoreCharacters,
-        hasMore
+        hasMore,
+        searchTerm,
+        handleSearchChange,
+        clearSearch,
+        isSearching,
+        filteredCount
     } = useCharactersViewModel();
 
     // Configurazione colonne per la griglia responsive
@@ -34,17 +41,65 @@ export const Characters = () => {
                 </p>
             </div>
 
-            {/* Griglia personaggi */}
-            <div className={style.gridContainer}>
-                <CharacterCardGrid
-                    characters={characters}
-                    col={gridColumns}
-                />
+            <div className={style.searchSection}>
+                <InputGroup className={style.searchBar}>
+                    <InputGroupText className={style.searchIcon}>
+                        🔍
+                    </InputGroupText>
+                    <Input
+                        type="text"
+                        placeholder="Cerca un personaggio per nome..."
+                        value={searchTerm}
+                        onChange={(e) => handleSearchChange(e.target.value)}
+                        className={style.searchInput}
+                    />
+                    {isSearching && (
+                        <Button
+                            color="secondary"
+                            outline
+                            onClick={clearSearch}
+                            className={style.clearBtn}
+                        >
+                            ✕
+                        </Button>
+                    )}
+                </InputGroup>
+
+                {/* Risultati ricerca */}
+                {isSearching && (
+                    <p className={style.searchResults}>
+                        {filteredCount === 0
+                            ? `Nessun personaggio trovato per "${searchTerm}"`
+                            : `${filteredCount} ${filteredCount === 1 ? 'personaggio trovato' : 'personaggi trovati'}`
+                        }
+                    </p>
+                )}
             </div>
 
-            {/* Bottone carica altri */}
-            {hasMore && (
-                <div className={style.loadMoreSection}>
+            {/* Griglia personaggi */}
+            {filteredCount > 0 ? (
+                <div className={style.gridContainer}>
+                    <CharacterCardGrid
+                        characters={characters}
+                        col={gridColumns}
+                    />
+                </div>
+            ) : (
+                <div className={style.noResults}>
+                    <p className="mb-0">😢 Nessun personaggio trovato</p>
+                    <Button
+                        color="primary"
+                        onClick={clearSearch}
+                        className="mt-3"
+                    >
+                        Mostra tutti i personaggi
+                    </Button>
+                </div>
+            )}
+
+            {/* Bottone carica altri - nascondi se c'è ricerca attiva */}
+            {!isSearching && hasMore && (
+                <div className={style.searchLoading}>
                     <Button
                         color="primary"
                         size="lg"
@@ -74,7 +129,7 @@ export const Characters = () => {
             )}
 
             {/* Messaggio limite raggiunto */}
-            {!hasMore && characters.length >= 500 && (
+            {!isSearching && !hasMore && allCharacters.length >= 500 && (
                 <div className={style.maxReached}>
                     <div className={style.maxReachedContent}>
                         <span className={style.star}>✨</span>
@@ -83,15 +138,43 @@ export const Characters = () => {
                     </div>
                 </div>
             )}
-
-            {/* Messaggio se non ci sono personaggi */}
-            {characters.length === 0 && !loading && (
-                <div className={style.noCharacters}>
-                    <p className="mb-0">Nessun personaggio disponibile</p>
-                </div>
-            )}
         </Container>
     );
 };
 
+
 export default Characters;
+
+//            {/* Messaggio se non ci sono personaggi */}
+//             {characters.length === 0 && !loading && (
+//                 <div className={style.noCharacters}>
+//                     <p className="mb-0">Nessun personaggio disponibile</p>
+//                 </div>
+//             )}
+//         </Container>
+//     );
+// };
+
+
+// {/* Bottone carica altri - nascondi se c'è ricerca attiva */}
+//             {!isSearching && hasMore && (
+//                 <div className={style.loadMoreSection}>
+//                     <Button
+//                         color="primary"
+//                         size="lg"
+//                         className={style.loadMoreBtn}
+//                         onClick={loadMoreCharacters}
+//                         disabled={loading}
+//                     >
+//                         {loading ? (
+//                             <>
+//                                 <Spinner size="sm" className={style.spinner} />
+//                                 <span className="ms-2">Caricamento in corso...</span>
+//                             </>
+//                         ) : (
+//                             <>
+//                                 <span>Carica altri personaggi</span>
+//                                 <span className={`ms-2 ${style.arrow}`}>↓</span>
+//                             </>
+//                         )}
+//                     </Button>
