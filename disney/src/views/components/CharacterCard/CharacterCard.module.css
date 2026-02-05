@@ -6,8 +6,11 @@
 
 .imageUrl {
     padding: 20px;
-    max-width: 180px;
-    margin: auto; transition: all .2s;
+    width: 180px;
+    height: 300px;
+    margin: auto;
+    transition: all .2s;
+    object-fit: cover;
 }
 
 .title {
@@ -25,7 +28,7 @@
 }
 
 .card:hover .imageUrl {
-    transform: scale(1.4) translateY(-2%);
+    transform: scale(1.1) translateY(-2%);
 }
 
 a {

@@ -6,7 +6,7 @@ import {data} from "../../models/characters-data.json"
 
 
 function Home() {
-    const characterFiltered = data.filter((apiData) => apiData._id === 36 || apiData._id === 12 || apiData._id === 7);
+    const characterFiltered = data.filter((apiData) => apiData._id === 4703 || apiData._id === 1947 || apiData._id === 5371);
     console.log(characterFiltered);
     return (
         <div className="container">

@@ -36,30 +36,40 @@ export const Characters = () => {
         <Container className={style.pageContainer}>
             {/* Header */}
             <div className={style.header}>
-                <h1 className={style.title}>Personaggi Disney</h1>
-                <p className={style.count}>
-                    {characters.length} personaggi caricati
-                    {characters.length >= 500 && ' (massimo raggiunto)'}
-                </p>
-            </div>
+                <div className={style.header}>
+                    <div className={style.headerLeft}>
+                        <h1 className={style.title}>Personaggi Disney</h1>
+                        <p className={style.count}>
+                            {isSearching
+                                ? `${filteredCount} risultat${filteredCount === 1 ? 'o' : 'i'} della ricerca`
+                                : `${allCharacters.length} personaggi caricati${allCharacters.length >= 500 ? ' (massimo raggiunto)' : ''}`
+                            }
+                        </p>
+                    </div>
 
-            <Button
-                color="primary"
-                className={style.toggleBtn}
-                onClick={toggleViewMode}
-            >
-                {viewMode === 'grid' ? (
-                    <>
-                        <span className={style.icon}>☰</span>
-                        <span>Vista Lista</span>
-                    </>
-                ) : (
-                    <>
-                        <span className={style.icon}>⊞</span>
-                        <span>Vista Griglia</span>
-                    </>
-                )}
-            </Button>
+                    {/* 🆕 Toggle Segmented Control */}
+                    <div className={style.toggleContainer}>
+                        <div className={style.toggleBtnGradient}>
+                            <button
+                                className={`${style.toggleOption} ${viewMode === 'grid' ? style.active : style.inactive}`}
+                                onClick={() => viewMode !== 'grid' && toggleViewMode()}
+                                aria-label="Vista griglia"
+                            >
+                                <span className={style.toggleIcon}>⊞</span>
+                                <span>Griglia</span>
+                            </button>
+                            <button
+                                className={`${style.toggleOption} ${viewMode === 'list' ? style.active : style.inactive}`}
+                                onClick={() => viewMode !== 'list' && toggleViewMode()}
+                                aria-label="Vista lista"
+                            >
+                                <span className={style.toggleIcon}>☰</span>
+                                <span>Lista</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div className={style.searchSection}>
@@ -170,41 +180,11 @@ export const Characters = () => {
                 </div>
             )}
         </Container>
-    );
+);
 };
 
 export default Characters;
 
-//            {/* Messaggio se non ci sono personaggi */}
-//             {characters.length === 0 && !loading && (
-//                 <div className={style.noCharacters}>
-//                     <p className="mb-0">Nessun personaggio disponibile</p>
-//                 </div>
-//             )}
-//         </Container>
-//     );
-// };
 
 
-// {/* Bottone carica altri - nascondi se c'è ricerca attiva */}
-//             {!isSearching && hasMore && (
-//                 <div className={style.loadMoreSection}>
-//                     <Button
-//                         color="primary"
-//                         size="lg"
-//                         className={style.loadMoreBtn}
-//                         onClick={loadMoreCharacters}
-//                         disabled={loading}
-//                     >
-//                         {loading ? (
-//                             <>
-//                                 <Spinner size="sm" className={style.spinner} />
-//                                 <span className="ms-2">Caricamento in corso...</span>
-//                             </>
-//                         ) : (
-//                             <>
-//                                 <span>Carica altri personaggi</span>
-//                                 <span className={`ms-2 ${style.arrow}`}>↓</span>
-//                             </>
-//                         )}
-//                     </Button>
+

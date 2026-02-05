@@ -6,6 +6,32 @@
     "nextPage": "http://api.disneyapi.dev/character?page=2&pageSize=50"
   },
   "data": [
+        {
+          "_id": 4703,
+          "films": [],
+          "shortFilms": [],
+          "tvShows": [],
+          "videoGames": [],
+          "parkAttractions": [],
+          "allies": [],
+          "enemies": [],
+          "name": "Mickey Mouse",
+          "imageUrl": "https://static.wikia.nocookie.net/disney/images/9/99/Mickey_Mouse_Disney_3.jpeg",
+          "url": "https://api.disneyapi.dev/characters/4703"
+        },
+    {
+      "_id": 1947,
+      "name": "Donald Duck",
+      "imageUrl": "https://static.wikia.nocookie.net/disney/images/a/ab/Donald_Duck_Disney_1.png",
+      "url": "https://api.disneyapi.dev/characters/1947"
+      },
+
+    {
+      "_id": 5371,
+      "name": "Pluto",
+      "imageUrl": "https://static.wikia.nocookie.net/disney/images/1/13/Pluto_the_pup.png",
+      "url": "https://api.disneyapi.dev/characters/5371"
+    },
     {
       "_id": 112,
       "films": [
@@ -783,51 +809,7 @@
       "name": "Aqua",
       "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/0a/Aqua_KHIII.png",
       "url": "https://api.disneyapi.dev/characters/291"
-    },
-    {
-      "_id": 303,
-      "films": [],
-      "shortFilms": [],
-      "tvShows": [],
-      "videoGames": [],
-      "parkAttractions": [
-        "Tower of Terror"
-      ],
-      "allies": [],
-      "enemies": [],
-      "name": "Archibald Smelding",
-      "imageUrl": "https://static.wikia.nocookie.net/disney/images/a/a6/Archibald_Smelding.jpg",
-      "url": "https://api.disneyapi.dev/characters/303"
-    },
-    {
-      "_id": 322,
-      "films": [
-        "Treasure Planet"
-      ],
-      "shortFilms": [],
-      "tvShows": [],
-      "videoGames": [],
-      "parkAttractions": [],
-      "allies": [],
-      "enemies": [],
-      "name": "Mr. Arrow",
-      "imageUrl": "https://static.wikia.nocookie.net/disney/images/5/51/Profile_-_Mr._Arrow.png",
-      "url": "https://api.disneyapi.dev/characters/322"
-    },
-    {
-      "_id": 351,
-      "films": [
-        "The Little Mermaid: Ariel's Beginning"
-      ],
-      "shortFilms": [],
-      "tvShows": [],
-      "videoGames": [],
-      "parkAttractions": [],
-      "allies": [],
-      "enemies": [],
-      "name": "Queen Athena",
-      "imageUrl": "https://static.wikia.nocookie.net/disney/images/4/41/Athena_TLM.jpg",
-      "url": "https://api.disneyapi.dev/characters/351"
     }
+
   ]
 }
