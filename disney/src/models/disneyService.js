@@ -32,6 +32,21 @@ export const disneyService = {
             totalPages: json.info?.totalPages || 1,
             count: json.info?.count || 0
         };
+    },
+
+    async getCharacterById(id) {
+        const response = await fetch(`https://api.disneyapi.dev/character/${id}`);
+
+        if (!response.ok) {
+            if (response.status === 404) {
+                throw new Error(`Personaggio con ID ${id} non trovato`);
+            }
+            throw new Error("Errore nel caricamento del personaggio");
+        }
+        const json = await response.json();
+
+        // L'API ritorna { data: { _id, name, ... } }
+        return formatCharacter(json.data);
     }
 };
 
