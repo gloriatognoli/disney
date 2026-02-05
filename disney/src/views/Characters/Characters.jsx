@@ -2,7 +2,7 @@
 import React from 'react';
 import { Container, Button, Spinner, Input, InputGroup, InputGroupText } from 'reactstrap';
 import { useCharactersViewModel } from '../../viewmodels/useCharactersViewModel';
-
+import CharacterList from '../components/CharacterList/CharacterList.jsx'
 import  CharacterCardGrid  from '../components/CharacterCardGrid/CharacterCardGrid.jsx';
 import style from './Characters.module.css';
 
@@ -17,7 +17,9 @@ export const Characters = () => {
         handleSearchChange,
         clearSearch,
         isSearching,
-        filteredCount
+        filteredCount,
+        viewMode,
+        toggleViewMode
     } = useCharactersViewModel();
 
     // Configurazione colonne per la griglia responsive
@@ -40,6 +42,25 @@ export const Characters = () => {
                     {characters.length >= 500 && ' (massimo raggiunto)'}
                 </p>
             </div>
+
+            <Button
+                color="primary"
+                className={style.toggleBtn}
+                onClick={toggleViewMode}
+            >
+                {viewMode === 'grid' ? (
+                    <>
+                        <span className={style.icon}>☰</span>
+                        <span>Vista Lista</span>
+                    </>
+                ) : (
+                    <>
+                        <span className={style.icon}>⊞</span>
+                        <span>Vista Griglia</span>
+                    </>
+                )}
+            </Button>
+
 
             <div className={style.searchSection}>
                 <InputGroup className={style.searchBar}>
@@ -78,22 +99,32 @@ export const Characters = () => {
 
             {/* Griglia personaggi */}
             {filteredCount > 0 ? (
-                <div className={style.gridContainer}>
-                    <CharacterCardGrid
-                        characters={characters}
-                        col={gridColumns}
-                    />
+                <div className={style.contentContainer}>
+                    {viewMode === 'grid' ? (
+                        // Visualizzazione GRIGLIA
+                        <CharacterCardGrid
+                            characters={characters}
+                            col={gridColumns}
+                        />
+                    ) : (
+                        // Visualizzazione LISTA
+                        <CharacterList
+                            characters={characters}
+                        />
+                    )}
                 </div>
-            ) : (
+            ) : !loading && (
                 <div className={style.noResults}>
                     <p className="mb-0">😢 Nessun personaggio trovato</p>
-                    <Button
-                        color="primary"
-                        onClick={clearSearch}
-                        className="mt-3"
-                    >
-                        Mostra tutti i personaggi
-                    </Button>
+                    {isSearching && (
+                        <Button
+                            color="primary"
+                            onClick={clearSearch}
+                            className="mt-3"
+                        >
+                            Mostra tutti i personaggi
+                        </Button>
+                    )}
                 </div>
             )}
 
@@ -141,7 +172,6 @@ export const Characters = () => {
         </Container>
     );
 };
-
 
 export default Characters;
 

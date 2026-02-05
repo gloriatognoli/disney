@@ -13,6 +13,7 @@ export const useCharactersViewModel = () => {
     const [isSearching, setIsSearching] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
     const [searchResultCount, setSearchResultCount] = useState(0);
+    const [viewMode, setViewMode] = useState('grid');
 
     useEffect(() => {
         // Se il campo è vuoto, torna alla visualizzazione normale
@@ -82,6 +83,10 @@ export const useCharactersViewModel = () => {
     const displayedCharacters = isSearching ? searchResults : characters;
     const displayedCount = isSearching ? searchResultCount : characters.length;
 
+    const toggleViewMode = () => {
+        setViewMode(prev => (prev === 'grid' ? 'list' : 'grid'));
+    }
+
     // 4. ESPOSIZIONE: Cosa vede la View
     return {
         characters: displayedCharacters,
@@ -89,7 +94,8 @@ export const useCharactersViewModel = () => {
         loading,
         loadMoreCharacters,
         hasMore: characters.length < 500 && !isSearching,
-
+        viewMode,
+        toggleViewMode,
         searchTerm,
         handleSearchChange,
         clearSearch,
