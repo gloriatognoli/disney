@@ -78,7 +78,7 @@ export const useCharactersViewModel = () => {
     //Anche qui viene fatta una fetch nel momento in cui il momento clicca sul bottone (questa è la logica del bottone "Load More Characters"
     //Viene chiamata genericamente l'API (getCharacters) chiedendo 50 personaggi alla volta (logica nel disneyService.js)
     const loadMoreCharacters = async () => {
-        if (loading || characters.length >= 500 || isSearching) return;
+        if (loading || characters.length >= 9820 || isSearching) return;
 
         //Inizialmente si attiva lo stato di caricamento, poi si chiama l'API chiedendo una pagina (con getCharacters)
         setLoading(true);
@@ -89,7 +89,7 @@ export const useCharactersViewModel = () => {
             // i "..." segnalano un'espansione di combined (come se fosse una concatenazione degli array già esistenti) (prendono il nome di spread operator)
             setCharacters(prevCharacters => {
                 const combined = [...prevCharacters, ...newData];
-                return combined.slice(0, 500);
+                return combined.slice(0, 9820);
             });
 
             //Incrementa il numero della pagina
@@ -140,7 +140,7 @@ export const useCharactersViewModel = () => {
         allCharacters: characters,
         loading,
         loadMoreCharacters,
-        hasMore: characters.length < 500 && !isSearching,
+        hasMore: characters.length < 9820 && !isSearching,
         viewMode,
         toggleViewMode,
         searchTerm,

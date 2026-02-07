@@ -44,7 +44,7 @@ export const Characters = () => {
                         <p className={style.count}>
                             {isSearching
                                 ? `${filteredCount} results`
-                                : `${allCharacters.length} characters loaded${allCharacters.length >= 500 ? ' (All characters loaded)' : ''}`
+                                : `${allCharacters.length} characters loaded${allCharacters.length >= 9820 ? ' (All characters loaded)' : ''}`
                             }
                         </p>
                     </div>
@@ -177,7 +177,7 @@ export const Characters = () => {
             )}
 
             {/* Messaggio limite raggiunto tutti i personaggi caricati. nel condizionale se non sta caricando e non ne ha altri da caricare */}
-            {!isSearching && !hasMore && allCharacters.length >= 500 && (
+            {!isSearching && !hasMore && allCharacters.length >= 9820 && (
                 <div className={style.maxReached}>
                     <div className={style.maxReachedContent}>
                         <p className="mb-0">You loaded all Disney characters!</p>

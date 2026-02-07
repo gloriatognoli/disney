@@ -17,12 +17,6 @@ function App() {
         {url: "/info", text: "Info"}
     ];
 
-    // Removed from Routes - reinsert later
-    // <Route path="/characters" element={<Characters />}/>
-    // <Route path="/info" element={<Info />}/>
-    // <Route path="/characters/:_id" element={<CharacterDetail />}/>
-    // <Route path="*" element={<NotFound />}/>
-
     return (
 
         <Router>

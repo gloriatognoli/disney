@@ -1,9 +1,8 @@
-//Pagina CharacterDetail
 import React from 'react';
 import { Container, Button, Spinner, Row, Col } from 'reactstrap';
 import { useCharacterDetailViewModel } from '../../viewmodels/useCharacterDetailViewModel';
 import style from './CharacterDetail.module.css';
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export const CharacterDetail = () => {
     const {
@@ -53,8 +52,8 @@ export const CharacterDetail = () => {
     }
 
     // NO CHARACTER (non dovrebbe succedere)
-    if (!character) {
-        return <Navigate to="/404" replace />
+    if (character === undefined) {
+        return <Navigate to="404" replace />
     }
 
     // HELPER FUNCTION: Mostra valore o "Unknown"
