@@ -1,10 +1,12 @@
-// src/views/Characters/Characters.jsx
 import React from 'react';
-import { Container, Button, Spinner, Input, InputGroup, InputGroupText } from 'reactstrap';
+import { Container, Button, Input, InputGroup, InputGroupText } from 'reactstrap';
 import { useCharactersViewModel } from '../../viewmodels/useCharactersViewModel';
 import CharacterList from '../components/CharacterList/CharacterList.jsx'
 import  CharacterCardGrid  from '../components/CharacterCardGrid/CharacterCardGrid.jsx';
 import style from './Characters.module.css';
+import searchIcon from '../../assets/searchIcon.svg';
+import clearSearchIcon from '../../assets/clearSearchIcon.svg';
+import mickeySpinner from '../../assets/mickeySpinner.svg';
 
 export const Characters = () => {
     const {
@@ -23,7 +25,7 @@ export const Characters = () => {
     } = useCharactersViewModel();
 
     // Configurazione colonne per la griglia responsive
-    // 3 personaggi per riga su desktop, 2 su tablet, 1 su mobile
+
     const gridColumns = {
         xs: 1,  // Mobile: 1 per riga
         sm: 2,  // Tablet piccolo: 2 per riga
@@ -34,56 +36,54 @@ export const Characters = () => {
 
     return (
         <Container className={style.pageContainer}>
-            {/* Header */}
+            {/* Header: Titolo della pagina e rendering condizionale di un paragrafo che mostra il numero di personaggi caricati*/}
             <div className={style.header}>
                 <div className={style.header}>
                     <div className={style.headerLeft}>
-                        <h1 className={style.title}>Personaggi Disney</h1>
+                        <h1 className={style.title}>Disney Characters</h1>
                         <p className={style.count}>
                             {isSearching
-                                ? `${filteredCount} risultat${filteredCount === 1 ? 'o' : 'i'} della ricerca`
-                                : `${allCharacters.length} personaggi caricati${allCharacters.length >= 500 ? ' (massimo raggiunto)' : ''}`
+                                ? `${filteredCount} results`
+                                : `${allCharacters.length} characters loaded${allCharacters.length >= 500 ? ' (All characters loaded)' : ''}`
                             }
                         </p>
                     </div>
 
-                    {/* 🆕 Toggle Segmented Control */}
+                    {/* Toggle: Pulsante che switcha tra la visualizzazione grid e list (sempre tramite rendering condizionale */}
                     <div className={style.toggleContainer}>
                         <div className={style.toggleBtnGradient}>
-                            <button
-                                className={`${style.toggleOption} ${viewMode === 'grid' ? style.active : style.inactive}`}
+                            <button className={`${style.toggleOption} ${viewMode === 'grid' ? style.active : style.inactive}`}
                                 onClick={() => viewMode !== 'grid' && toggleViewMode()}
-                                aria-label="Vista griglia"
-                            >
-                                <span className={style.toggleIcon}>⊞</span>
-                                <span>Griglia</span>
+                                aria-label="Grid view">
+                                <span>Grid</span>
                             </button>
-                            <button
-                                className={`${style.toggleOption} ${viewMode === 'list' ? style.active : style.inactive}`}
+
+                            <button className={`${style.toggleOption} ${viewMode === 'list' ? style.active : style.inactive}`}
                                 onClick={() => viewMode !== 'list' && toggleViewMode()}
-                                aria-label="Vista lista"
-                            >
-                                <span className={style.toggleIcon}>☰</span>
-                                <span>Lista</span>
+                                aria-label="List view">
+                                <span>List</span>
                             </button>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-
+            {/* Barra di ricerca personaggi per name con pulsante di invio ricerca e di cancellazione della ricerca */}
             <div className={style.searchSection}>
                 <InputGroup className={style.searchBar}>
                     <InputGroupText className={style.searchIcon}>
-                        🔍
+                        <img src={searchIcon} alt="Search" />
                     </InputGroupText>
+
                     <Input
                         type="text"
-                        placeholder="Cerca un personaggio per nome..."
+                        placeholder="Search for your character by name..."
                         value={searchTerm}
                         onChange={(e) => handleSearchChange(e.target.value)}
                         className={style.searchInput}
                     />
+
                     {isSearching && (
                         <Button
                             color="secondary"
@@ -91,54 +91,60 @@ export const Characters = () => {
                             onClick={clearSearch}
                             className={style.clearBtn}
                         >
-                            ✕
+                            <img src={clearSearchIcon} alt="Clear" />
                         </Button>
                     )}
                 </InputGroup>
 
-                {/* Risultati ricerca */}
+                {/* Visualizzazione dei risultati della ricerca con rendering condizionale;
+                    Il simbolo $ è utilizzato convenzionalmente per selezionare un elemento jsx specifico (contenuto in una variabile) */}
                 {isSearching && (
                     <p className={style.searchResults}>
                         {filteredCount === 0
-                            ? `Nessun personaggio trovato per "${searchTerm}"`
-                            : `${filteredCount} ${filteredCount === 1 ? 'personaggio trovato' : 'personaggi trovati'}`
+                            ? `No results for "${searchTerm}"`
+                            : `${filteredCount} ${filteredCount === 1 ? 'character found' : 'characters found'}`
                         }
                     </p>
                 )}
             </div>
 
-            {/* Griglia personaggi */}
+            {/* Visualizzazione dei personaggi con redering condizionale
+             (diversa a seconda che sia selezionata la griglia o la lista) */}
             {filteredCount > 0 ? (
                 <div className={style.contentContainer}>
                     {viewMode === 'grid' ? (
-                        // Visualizzazione GRIGLIA
+
+                        // Visualizzazione grid (characters viene passata come prop dal viewmodel, importata come hook function)
                         <CharacterCardGrid
                             characters={characters}
                             col={gridColumns}
                         />
                     ) : (
-                        // Visualizzazione LISTA
+                        // Visualizzazione list (anche qui characters viene passata come prop dal viewmodel, importata come hook function)
                         <CharacterList
                             characters={characters}
                         />
                     )}
                 </div>
+
             ) : !loading && (
                 <div className={style.noResults}>
-                    <p className="mb-0">😢 Nessun personaggio trovato</p>
+                    <p className="mb-0">No characters found. Try again!</p>
                     {isSearching && (
+                        //Bottone che, in caso di character not found, cancella la ricerca e riporta alla visualizzazione di tutti i personaggi
+                        //mantenendo la visualizzazione (grid/list) che c'era prima
                         <Button
                             color="primary"
                             onClick={clearSearch}
                             className="mt-3"
                         >
-                            Mostra tutti i personaggi
+                            Show all characters
                         </Button>
                     )}
                 </div>
             )}
 
-            {/* Bottone carica altri - nascondi se c'è ricerca attiva */}
+            {/* Bottone di caricamento di  altri personaggi - nascosto se la ricerca è attiva */}
             {!isSearching && hasMore && (
                 <div className={style.searchLoading}>
                     <Button
@@ -150,32 +156,31 @@ export const Characters = () => {
                     >
                         {loading ? (
                             <>
-                                <Spinner size="sm" className={style.spinner} />
-                                <span className="ms-2">Caricamento in corso...</span>
+                                <img className={style.spinner}
+                                    src={mickeySpinner}
+                                    alt="Loading" />
+                                <span className="ms-2">Loading...</span>
                             </>
                         ) : (
                             <>
-                                <span>Carica altri personaggi</span>
-                                <span className={`ms-2 ${style.arrow}`}>↓</span>
+                                <span>Load more characters</span>
                             </>
                         )}
                     </Button>
 
                     {loading && (
                         <p className={style.loadingText}>
-                            Sto caricando nuovi personaggi Disney...
+                            Loading more characters...
                         </p>
                     )}
                 </div>
             )}
 
-            {/* Messaggio limite raggiunto */}
+            {/* Messaggio limite raggiunto tutti i personaggi caricati. nel condizionale se non sta caricando e non ne ha altri da caricare */}
             {!isSearching && !hasMore && allCharacters.length >= 500 && (
                 <div className={style.maxReached}>
                     <div className={style.maxReachedContent}>
-                        <span className={style.star}>✨</span>
-                        <p className="mb-0">Hai caricato tutti i 500 personaggi Disney!</p>
-                        <span className={style.star}>✨</span>
+                        <p className="mb-0">You loaded all Disney characters!</p>
                     </div>
                 </div>
             )}

@@ -1,0 +1,45 @@
+<svg
+        width="30px"
+        height="30px"
+        viewBox="-2.4 -2.4 28.80 28.80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="#00000">
+
+    <g
+            id="SVGRepo_bgCarrier"
+            stroke-width="0">
+
+    </g>
+    <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+</g>
+
+    <g id="SVGRepo_iconCarrier">
+
+        <rect
+                width="24"
+                height="24">
+
+        </rect>
+
+        <path
+                d="M7 17L16.8995 7.10051"
+                stroke="#666666"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+        </path>
+
+        <path
+                d="M7 7.00001L16.8995 16.8995"
+                stroke="#666666"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+        </path>
+    </g>
+</svg>

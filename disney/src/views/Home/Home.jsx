@@ -19,7 +19,7 @@ function Home() {
                             characters={characterFiltered}
                             col={{ xs: 1, sm: 1, md: 3, lg: 3, xl: 3 }}
                         />
-                        <NavLink className="button" to="/Characters">Gotta Catch 'em all</NavLink>
+                        <NavLink className="button" to="/Characters">Discover the characters</NavLink>
                     </div>
 
                 </div>
