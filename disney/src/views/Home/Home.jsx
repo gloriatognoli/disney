@@ -5,10 +5,12 @@ import { NavLink } from "react-router-dom";
 import {data} from "../../models/characters-data.json"
 import style from "./Home.module.css"
 
-
+//Costruzione della pagina Home:
+//Applichiamo il metodo filter ai nostri dati iniziali (in characters-data.json) per mostrare 3 specifici personaggi
 function Home() {
     const characterFiltered = data.filter((apiData) => apiData._id === 4703 || apiData._id === 1947 || apiData._id === 5371);
-    console.log(characterFiltered);
+
+    //Visualizzazione della pagina Home
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -23,7 +25,8 @@ function Home() {
                             characters={characterFiltered}
                             col={{ xs: 1, sm: 1, md: 3, lg: 3, xl: 3 }}
                         />
-                        <NavLink className="button" to="/Characters">Discover the characters</NavLink>
+
+                        <NavLink className={style.button} to="/Characters">Discover the characters</NavLink>
                     </div>
 
                 </div>

@@ -148,7 +148,6 @@ export const Characters = () => {
             {!isSearching && hasMore && (
                 <div className={style.searchLoading}>
                     <Button
-                        color="primary"
                         size="lg"
                         className={style.loadMoreBtn}
                         onClick={loadMoreCharacters}

@@ -37,6 +37,7 @@
     color: #666;
     font-weight: 500;
     margin: 0;
+    justify-self: center;
 }
 
 /* ========== TOGGLE SWITCH (Segmented Control) ========== */
@@ -201,6 +202,16 @@
     animation: pulse 1.5s ease-in-out infinite;
 }
 
+.loadMoreBtn {
+    background: white !important;
+    color: #667eea !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    border-color: #667eea !important;
+    border-style: solid !important;
+}
 /* Spinner */
 
 .spinner {
@@ -320,6 +331,7 @@
 @media (max-width: 576px) {
     .title {
         font-size: 1.75rem;
+        justify-self: center;
     }
 
     /* Nascondi testo, mostra solo icone su mobile piccolo */

@@ -12,7 +12,25 @@
 }
 
 .backBtn {
-    font-weight: 600;
+    background: white !important;
+    color: #667eea !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    border-color: #667eea !important;
+    border-style: solid !important;
+}
+
+.tryBtn {
+    background: white !important;
+    color: #667eea !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    border-color: #667eea !important;
+    border-style: solid !important;
 }
 
 .idBadge {
@@ -160,12 +178,14 @@
 }
 
 .navBtn {
-    flex: 1;
-    max-width: 250px;
-    font-weight: 600;
-    background: #667eea !important;
-    border-style: solid;
+    background: white !important;
+    color: #667eea !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
     border-color: #667eea !important;
+    border-style: solid !important;
 }
 
 .navBtn:disabled {

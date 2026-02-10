@@ -8,3 +8,14 @@
     margin-bottom: 2rem;
     letter-spacing: -1px;
 }
+
+.button {
+    background: white;
+    color: #667eea;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-color: #667eea;
+    border-style: solid;
+}

@@ -45,11 +45,11 @@ export const CharacterDetail = () => {
                     <p className={style.errorText}>{error}</p>
                     <div className={style.errorActions}>
                         {hasPrev && (
-                            <Button color="secondary" outline onClick={goToPrev}>
+                            <Button onClick={goToPrev} className={style.tryBtn}>
                             Try loading the previous character
                             </Button>)}
                         {hasNext && (
-                            <Button color="secondary" outline onClick={goToNext}>
+                            <Button onClick={goToNext} className={style.tryBtn}>
                                 Try loading the next character
                             </Button>
                         )}
@@ -79,7 +79,7 @@ export const CharacterDetail = () => {
         <Container className={style.container}>
             {/* Header della card con bottone di navigazione e ID del personaggio*/}
             <div className={style.header}>
-                <Button color="secondary" outline onClick={goBack} className={style.backBtn}>
+                <Button onClick={goBack} className={style.backBtn}>
                     Go back to characters' list
                 </Button>
                 <span className={style.idBadge}>{currentId}</span>
