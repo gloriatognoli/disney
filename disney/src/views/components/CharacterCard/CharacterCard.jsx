@@ -14,6 +14,7 @@ function CharacterCard(props) {
     const fallbackImage = logoDisney;
     const imageSrc = image || fallbackImage;
     const handleImageError = (e) => {
+        console.warn("Couldn't load image, I'll use the fallback image");
         e.target.src = fallbackImage;
     };
 

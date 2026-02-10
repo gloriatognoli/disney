@@ -1,10 +1,12 @@
 import React from "react";
 import CharacterCard from "../CharacterCard/CharacterCard.jsx";
 
-
+//Gestione della visualizzazione Grid delle CharacterCard:
 function CharacterCardGrid(props) {
     const {characters, col} = props;
 
+    //Applichiamo il metodo map all'array dei personaggi (character) e ad ognuno applichiamo la visualizzazione a Card
+    //prendendo come informazioni id, name e image
     const characterCardsCol = characters.map((character) => {
         return (
             <div key={character._id} className="col">
@@ -17,6 +19,7 @@ function CharacterCardGrid(props) {
         )
     });
 
+    //Gestione della visualizzazione responsive
     return (
         <div className={`row 
                 row-cols-${col.xs}

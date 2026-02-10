@@ -1,4 +1,3 @@
-import './App.css'
 import MainTemplate from '../components/MainTemplate/MainTemplate.jsx';
 import {HashRouter as Router} from 'react-router-dom';
 import {Route, Routes} from 'react-router-dom';

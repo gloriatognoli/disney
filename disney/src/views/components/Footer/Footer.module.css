@@ -1,38 +1,52 @@
 .footer {
-    background: #242424;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);;
     color: white;
-    padding: 20px 0;
+    width: 100vw;
+    padding: 3rem;
+
 }
 
-#course {
+#course a {
     font-size: 20px;
-    margin-right: 30px;
     max-width:250px;
-}
+    justify-content: center;
+    color: white !important;
+    margin-bottom: 3rem !important;
 
-.logo {
-    max-width: 80px;
-    margin: 0 6px;
-    align-self: center;
 }
 
 .copyright {
-    border-left: 1px solid #393939;
-    padding-left: 20px;
-    justify-content: space-between;
-    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
 }
 
 
 .footerNav{
-    border-left: 1px solid #393939;
-    padding-left: 20px;
+    border-left: 1px;
+
+
 }
 .footerNav a{
     margin: 8px 0;
     display: inline-block;
+    color: white !important;
 }
 
-.active{
-    border-bottom: 1px solid #dd092f;
+
+.logoBicocca {
+   max-width: 9rem;
+}
+
+.logoDisney {
+    max-width: 9rem !important;
+}
+
+.firma {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .logoDisney, .logoBicocca {
+        display: none;
+    }
 }
