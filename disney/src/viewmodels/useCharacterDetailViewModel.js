@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import { disneyService } from '../models/disneyService.js';
 
+//Definizione dei limiti dell'API; essa, infatti, contiene 9820 personaggi, con ID da 1 a 9820.
+//Alcuni personaggi con id compreso tra 1 e 9820 sono undefined. Per essi abbiamo definito una renderizzazione diversa,
+//diversa dalla redirection alla 404.
 const MAX_CHARACTER_ID = 9820;
 const MIN_CHARACTER_ID = 1;
 
@@ -55,9 +58,11 @@ export const useCharacterDetailViewModel = () => {
 
     //Gestione della navigazione tra le pagine singole (prev/next)
     //Qui si converte l'id corrente a numero intero (garantendo che si possa fare -1 e +1)
+    //Successivamente, si controlla che l'ID sia valido (compreso, quindi, tra 1 e 9820). Se non lo è, avviene la redirection
+    //alla 404.
     const currentId = parseInt(id);
     if (isNaN(currentId) || currentId < MIN_CHARACTER_ID || currentId > MAX_CHARACTER_ID) {
-        console.log('❌ ID fuori range:', currentId);
+        console.log('ID out of range:', currentId);
         navigate('/404', { replace: true });
         return;
     }

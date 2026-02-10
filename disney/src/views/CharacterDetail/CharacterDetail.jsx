@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Button, Spinner, Row, Col } from 'reactstrap';
+import { Container, Button, Row, Col } from 'reactstrap';
 import { useCharacterDetailViewModel } from '../../viewmodels/useCharacterDetailViewModel';
 import style from './CharacterDetail.module.css';
 import { Navigate } from 'react-router-dom';
+import mickeySpinnerGrey from "../../assets/mickeySpinnerGrey.svg";
+import confusedMinnie from "../../assets/confusedMinnie.png";
 
 export const CharacterDetail = () => {
     const {
@@ -17,32 +19,38 @@ export const CharacterDetail = () => {
         currentId
     } = useCharacterDetailViewModel();
 
-    // LOADING STATE
+    //Visualizzazione dello stato di caricamento della pagina
     if (loading) {
         return (
             <Container className={style.container}>
                 <div className={style.loadingContainer}>
-                    <Spinner color="primary" style={{ width: '3rem', height: '3rem' }} />
-                    <p className={style.loadingText}>Caricamento personaggio...</p>
+                    <img className={style.spinner}
+                         src={mickeySpinnerGrey}
+                         alt="Loading" />
+                    <p className={style.loadingText}>Loading character...</p>
                 </div>
             </Container>
         );
     }
 
-    // ERROR STATE
-    if (error) {
+    //Gestione della visualizzazione dei personaggi con id presente nell'API ma undefined (1<id<9820 ma senza personaggio)
+    if (character.name === undefined) {
         return (
             <Container className={style.container}>
                 <div className={style.errorContainer}>
-                    <h2 className={style.errorTitle}>😢 Oops!</h2>
+                    <h2 className={style.errorTitle}>No one is here...</h2>
+                    <img
+                        src={confusedMinnie}
+                        alt="Is anyone here?"/>
                     <p className={style.errorText}>{error}</p>
                     <div className={style.errorActions}>
-                        <Button color="primary" onClick={goBack}>
-                            Torna alla lista
-                        </Button>
                         {hasPrev && (
                             <Button color="secondary" outline onClick={goToPrev}>
-                                Prova personaggio precedente
+                            Try loading the previous character
+                            </Button>)}
+                        {hasNext && (
+                            <Button color="secondary" outline onClick={goToNext}>
+                                Try loading the next character
                             </Button>
                         )}
                     </div>
@@ -51,12 +59,13 @@ export const CharacterDetail = () => {
         );
     }
 
-    // NO CHARACTER (non dovrebbe succedere)
+    //Gestione del caso in cui nell'URL venga inserito qualcosa di diverso da character (riporta alla 404)
     if (character === undefined) {
         return <Navigate to="404" replace />
     }
 
-    // HELPER FUNCTION: Mostra valore o "Unknown"
+    //Gestione della visualizzazione dei dati del personaggio, che sono contenuti ciascuno in una variabile value:
+    //Se per una categoria non c'è value, mostra Unknown; se ce n'è più di una, separa i valori con una virgola. Altrimenti mostra Unknown
     const displayValue = (value) => {
         if (!value) return <span className={style.unknown}>Unknown</span>;
         if (Array.isArray(value)) {

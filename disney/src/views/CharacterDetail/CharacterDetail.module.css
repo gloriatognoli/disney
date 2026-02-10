@@ -168,6 +168,35 @@
     cursor: not-allowed;
 }
 
+/*spinner*/
+.spinner {
+    display: inline-block !important;
+    animation: mickeyRotate 1.2s linear infinite !important;
+    fill: #666666 !important;
+    stroke: #666666 !important;
+    width: 3rem !important;
+    height: 3rem !important;
+}
+
+/* Animazione di rotazione */
+@keyframes mickeyRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .header {
@@ -200,3 +229,4 @@
         max-width: 100%;
     }
 }
+
