@@ -1,5 +1,6 @@
 .infoPage {
     max-width: 800px;
+    height: 45vh;
     margin: 60px auto;
     padding: 40px 20px;
     text-align: center;
@@ -7,8 +8,8 @@
 
 .infoPage h1 {
     font-size: 2.5rem;
-    color: #dd092f;
-    margin-bottom: 1.5rem;
+    color: #667eea;
+    margin-top: 6rem;
 }
 
 .infoPage p {
