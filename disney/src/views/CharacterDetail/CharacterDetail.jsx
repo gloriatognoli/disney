@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Button, Row, Col } from 'reactstrap';
 import { useCharacterDetailViewModel } from '../../viewmodels/useCharacterDetailViewModel';
 import style from './CharacterDetail.module.css';
-import { Navigate } from 'react-router-dom';
 import mickeySpinnerGrey from "../../assets/mickeySpinnerGrey.svg";
 import confusedMinnie from "../../assets/confusedMinnie.png";
 
@@ -57,11 +56,6 @@ export const CharacterDetail = () => {
                 </div>
             </Container>
         );
-    }
-
-    //Gestione del caso in cui nell'URL venga inserito qualcosa di diverso da character (riporta alla 404)
-    if (character === undefined) {
-        return <Navigate to="404" replace />
     }
 
     //Gestione della visualizzazione dei dati del personaggio, che sono contenuti ciascuno in una variabile value:

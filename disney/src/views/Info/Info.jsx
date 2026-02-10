@@ -121,3 +121,5 @@ export const Info = () => {
         </Container>
     );
 };
+
+export default Info;

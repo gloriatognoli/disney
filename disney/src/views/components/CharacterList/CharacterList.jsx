@@ -7,7 +7,7 @@ import logoDisney from "../../../assets/logo_disney.png"
 
 //Gestione della visualizzazione List dei personaggi
 function CharacterList (props)  {
-    const {characters, id} = props;
+    const {characters} = props;
 
     //Gestione del caso in cui non ci sia l'immagine definita per un personaggio:
     //     //Definiamo un'immagine di fallback (il nostro logo) e la richiamiamo in caso di Error
@@ -34,7 +34,9 @@ function CharacterList (props)  {
                     />
                 </td>
                 {/* Link alla pagina CharacterDetail per ogni personaggio */}
-                    <td className={style.detailsContainer}><NavLink to={`/Characters/${id}`} className={style.detailsLink}>Details</NavLink></td>
+                    <td className={style.detailsContainer}>
+                        <NavLink to={`/Characters/${character._id}`} className={style.detailsLink}>Details</NavLink>
+                    </td>
             </tr>
         )
     });
