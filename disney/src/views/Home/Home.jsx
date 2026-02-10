@@ -3,6 +3,7 @@ import React from "react";
 import CharacterCardGrid from "../components/CharacterCardGrid/CharacterCardGrid.jsx"
 import { NavLink } from "react-router-dom";
 import {data} from "../../models/characters-data.json"
+import style from "./Home.module.css"
 
 
 function Home() {
@@ -15,6 +16,9 @@ function Home() {
 
                     <div className="my-5 text-center">
 
+                        <h1 className={style.title}>
+                            Welcome to Disney World!
+                        </h1>
                         <CharacterCardGrid
                             characters={characterFiltered}
                             col={{ xs: 1, sm: 1, md: 3, lg: 3, xl: 3 }}

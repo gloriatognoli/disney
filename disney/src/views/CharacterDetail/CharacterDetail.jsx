@@ -74,18 +74,18 @@ export const CharacterDetail = () => {
         return value;
     };
 
-    // MAIN RENDER
+    //Visualizzazione dei dati del personaggio
     return (
         <Container className={style.container}>
-            {/* Header con navigazione */}
+            {/* Header della card con bottone di navigazione e ID del personaggio*/}
             <div className={style.header}>
                 <Button color="secondary" outline onClick={goBack} className={style.backBtn}>
-                    ← Torna alla lista
+                    Go back to characters' list
                 </Button>
-                <span className={style.idBadge}>ID: {currentId}</span>
+                <span className={style.idBadge}>{currentId}</span>
             </div>
 
-            {/* Contenuto principale */}
+            {/* Contenuto principale della card */}
             <Row className={style.content}>
                 {/* Colonna immagine */}
                 <Col md={5} className={style.imageColumn}>
@@ -105,32 +105,32 @@ export const CharacterDetail = () => {
                     {/* Informazioni */}
                     <div className={style.infoSection}>
                         <div className={style.infoRow}>
-                            <span className={style.label}>🎬 Film:</span>
+                            <span className={style.label}>Movies:</span>
                             <span className={style.value}>{displayValue(character.films)}</span>
                         </div>
 
                         <div className={style.infoRow}>
-                            <span className={style.label}>📺 Serie TV:</span>
+                            <span className={style.label}>TV Series:</span>
                             <span className={style.value}>{displayValue(character.tvShows)}</span>
                         </div>
 
                         <div className={style.infoRow}>
-                            <span className={style.label}>🎮 Videogiochi:</span>
+                            <span className={style.label}>Videogames:</span>
                             <span className={style.value}>{displayValue(character.videoGames)}</span>
                         </div>
 
                         <div className={style.infoRow}>
-                            <span className={style.label}>🎪 Attrazioni nei parchi:</span>
+                            <span className={style.label}>Park Attractions:</span>
                             <span className={style.value}>{displayValue(character.parkAttractions)}</span>
                         </div>
 
                         <div className={style.infoRow}>
-                            <span className={style.label}>👥 Alleati:</span>
+                            <span className={style.label}>Allies:</span>
                             <span className={style.value}>{displayValue(character.allies)}</span>
                         </div>
 
                         <div className={style.infoRow}>
-                            <span className={style.label}>😈 Nemici:</span>
+                            <span className={style.label}>Enemies:</span>
                             <span className={style.value}>{displayValue(character.enemies)}</span>
                         </div>
                     </div>
@@ -140,7 +140,6 @@ export const CharacterDetail = () => {
             {/* Navigazione Prev/Next */}
             <div className={style.navigation}>
                 <Button
-                    color="primary"
                     size="lg"
                     onClick={goToPrev}
                     disabled={!hasPrev}
@@ -150,7 +149,6 @@ export const CharacterDetail = () => {
                 </Button>
 
                 <Button
-                    color="primary"
                     size="lg"
                     onClick={goToNext}
                     disabled={!hasNext}

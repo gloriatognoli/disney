@@ -1,6 +1,6 @@
 .navBar {
     background: white;
-    border-bottom: 2px solid #dd092f;
+    border-bottom: 2px solid #667eea;
     position: sticky;
     width: 100%;
     top: 0;
@@ -19,19 +19,23 @@
     max-width: 50px;
     transition: all .2s;
     margin-right: 20px;
+    color: #667eea !important;
+    filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(207deg) brightness(97%) contrast(96%);
+
 }
 
 .logo:hover {
     transform: rotate(360deg);
-    filter: invert(14%) sepia(67%) saturate(7456%) hue-rotate(345deg) brightness(97%) contrast(100%);
+    filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(207deg) brightness(97%) contrast(96%);
+
 }
 
 
 .navItem a {
+    font-size: 1.2rem;
     font-weight: bold;
-    text-transform: uppercase;
     padding: 5px 20px;
-    color: #242424 !important;
+    color: #667eea !important;
 }
 
 .navItem a.active {
