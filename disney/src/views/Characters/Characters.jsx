@@ -77,6 +77,7 @@ export const Characters = () => {
                     </InputGroupText>
 
                     <Input
+                        name="search"
                         type="text"
                         placeholder="Search for your character by name..."
                         value={searchTerm}
