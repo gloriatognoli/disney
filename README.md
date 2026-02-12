@@ -35,3 +35,9 @@ This project is a comprehensive web application that allows users to browse, sea
 
 ### API
 - **Disney API** (https://disneyapi.dev) - Restful API for Disney character data
+
+## INSTALLATION
+- **1.** Download the project
+- **2.** Open the terminal from the project's root
+- **3.** npm install
+- **4.** npm run dev
