@@ -26,7 +26,9 @@ function Home() {
                             col={{ xs: 1, sm: 1, md: 3, lg: 3, xl: 3 }}
                         />
 
-                        <NavLink className={style.button} to="/Characters">Discover the characters</NavLink>
+                        <div className="my-5">
+                            <NavLink className={style.button} to="/Characters">Discover the characters</NavLink>
+                        </div>
                     </div>
 
                 </div>

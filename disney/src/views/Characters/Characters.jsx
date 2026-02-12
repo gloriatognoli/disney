@@ -6,7 +6,7 @@ import  CharacterCardGrid  from '../components/CharacterCardGrid/CharacterCardGr
 import style from './Characters.module.css';
 import searchIcon from '../../assets/searchIcon.svg';
 import clearSearchIcon from '../../assets/clearSearchIcon.svg';
-import mickeySpinner from '../../assets/mickeySpinner.svg';
+import mickeySpinnerGrey from '../../assets/mickeySpinnerGrey.svg';
 
 export const Characters = () => {
     const {
@@ -156,7 +156,7 @@ export const Characters = () => {
                         {loading ? (
                             <>
                                 <img className={style.spinner}
-                                    src={mickeySpinner}
+                                    src={mickeySpinnerGrey}
                                     alt="Loading" />
                                 <span className="ms-2">Loading...</span>
                             </>
@@ -166,12 +166,6 @@ export const Characters = () => {
                             </>
                         )}
                     </Button>
-
-                    {loading && (
-                        <p className={style.loadingText}>
-                            Loading more characters...
-                        </p>
-                    )}
                 </div>
             )}
 

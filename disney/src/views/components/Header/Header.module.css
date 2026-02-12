@@ -32,8 +32,9 @@
 
 
 .navItem a {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-family: system-ui;
+    font-size: 1.5rem;
+    font-weight: 500;
     padding: 5px 20px;
     color: #667eea !important;
 }

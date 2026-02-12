@@ -69,19 +69,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    justify-self: center;
+    max-width: 60vw;
     text-align: center;
     gap: 2rem;
     padding: 2rem;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.errorContainer:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
 }
 
 .errorTitle {
-    font-size: 3rem;
+    font-family: "Walt Disney Script", sans-serif;
+    font-size: 4rem;
     font-weight: 700;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: 1px;
 }
 
 .errorText {
@@ -137,9 +149,12 @@
     transition: transform 0.3s ease;
 }
 
-.imageContainer:hover .image {
+.image:hover {
     transform: scale(1.05);
+    filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(207deg) brightness(97%) contrast(96%);
+    transition: all 0.3s ease;
 }
+
 
 /* ========== DETAILS ========== */
 .detailsColumn {

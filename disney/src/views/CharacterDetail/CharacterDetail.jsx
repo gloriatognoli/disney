@@ -38,7 +38,7 @@ export const CharacterDetail = () => {
             <Container className={style.container}>
                 <div className={style.errorContainer}>
                     <h2 className={style.errorTitle}>No one is here...</h2>
-                    <img
+                    <img className={style.image}
                         src={confusedMinnie}
                         alt="Is anyone here?"/>
                     <p className={style.errorText}>{error}</p>

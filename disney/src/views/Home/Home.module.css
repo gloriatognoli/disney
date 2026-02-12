@@ -1,12 +1,14 @@
 .title {
-    font-size: 3rem;
+    font-family: "Walt Disney Script", sans-serif;
+    font-size: 4rem;
     font-weight: 700;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 2rem;
-    letter-spacing: -1px;
+    margin-top: 6rem;
+    margin-bottom: 7rem;
+    letter-spacing: 1px;
 }
 
 .button {
@@ -18,4 +20,6 @@
     font-size: 0.9rem;
     border-color: #667eea;
     border-style: solid;
+    margin-top: 200px !important;
 }
+
