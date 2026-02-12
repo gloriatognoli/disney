@@ -24,7 +24,7 @@ function CharacterList (props)  {
     const characterListRows = characters.map((character) => {
         const imageSrc = character.imageUrl || fallbackImage;
         return (
-            <tr key={character._id} className="row-cols-1">
+            <tr key={character._id} className="row-cols-2">
                 <td className={style.listName}>{character.name}</td>
                 <td>
                     <img src={imageSrc}
@@ -43,12 +43,12 @@ function CharacterList (props)  {
 
     //Return principale della tabella (List):
     return (
-    <Table striped hover responsive className={style.table}>
+    <Table hover className={style.table}>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Details</th>
+            <th className={style.tableHeading}>Name</th>
+            <th className={style.tableHeading}>Image</th>
+            <th className={style.tableHeading}>Details</th>
         </tr>
         </thead>
         <tbody>

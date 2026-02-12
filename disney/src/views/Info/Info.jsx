@@ -2,20 +2,17 @@ import React from 'react';
 import { Container, Row, Col, Card, CardBody, Button } from 'reactstrap';
 import style from './Info.module.css';
 
-export const Info = () => {
+const Info = () => {
     return (
         <Container className={style.pageContainer}>
-            {/* Hero Section */}
+            {/* Hero Section: titolo della pagina */}
             <div className={style.hero}>
                 <h1 className={style.mainTitle}>About This Project</h1>
-                <p className={style.subtitle}>
-                    A modern Single Page Web Application exploring the magical world of Disney Characters
-                </p>
             </div>
 
-            {/* Main Content */}
+            {/* Contenuto principale */}
             <Row className={style.contentRow}>
-                {/* Description Section */}
+                {/* Descrizione del progetto */}
                 <Col lg="8" className="mb-4">
                     <Card className={style.card}>
                         <CardBody>
@@ -41,7 +38,7 @@ export const Info = () => {
                         </CardBody>
                     </Card>
 
-                    {/* Features Section */}
+                    {/* Caratteristiche e funzionalità del progetto */}
                     <Card className={`${style.card} mt-4`}>
                         <CardBody>
                             <h2 className={style.sectionTitle}>Key Features</h2>
@@ -55,9 +52,9 @@ export const Info = () => {
                     </Card>
                 </Col>
 
-                {/* Sidebar */}
+                {/* Informazioni generali (sidebar) */}
                 <Col lg="4">
-                    {/* API Info Card */}
+                    {/* Informazioni e link all'API */}
                     <Card className={`${style.card} ${style.highlightCard} mb-4`}>
                         <CardBody>
                             <h3 className={style.cardTitle}>Powered By</h3>
@@ -77,7 +74,7 @@ export const Info = () => {
                         </CardBody>
                     </Card>
 
-                    {/* Creators Card */}
+                    {/* Chi siamo? */}
                     <Card className={style.card}>
                         <CardBody>
                             <h3 className={style.cardTitle}>Created By</h3>
@@ -98,7 +95,7 @@ export const Info = () => {
                         </CardBody>
                     </Card>
 
-                    {/* Project Info Card */}
+                    {/* Card riassuntiva sul progetto */}
                     <Card className={`${style.card} mt-4`}>
                         <CardBody>
                             <h3 className={style.cardTitle}>Project Info</h3>
