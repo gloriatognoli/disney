@@ -43,7 +43,7 @@ const Info = () => {
                         <CardBody>
                             <h2 className={style.sectionTitle}>Key Features</h2>
                             <ul className={style.featureList}>
-                                <li>Browse over 500 Disney characters with detailed information</li>
+                                <li>Browse over 9000 Disney characters with detailed information</li>
                                 <li>Search functionality to quickly find your favorite characters</li>
                                 <li>Responsive design that works seamlessly on all devices</li>
                                 <li>Grid and list view options for personalized browsing</li>
