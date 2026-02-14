@@ -149,7 +149,7 @@
     transition: transform 0.3s ease;
 }
 
-.image:hover {
+.errorImage:hover {
     transform: scale(1.05);
     filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(207deg) brightness(97%) contrast(96%);
     transition: all 0.3s ease;
